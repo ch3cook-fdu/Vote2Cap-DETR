@@ -101,7 +101,7 @@ We also provide support for training and evaluating the network with all the abo
 Please **make sure** that:
 
 1. the defined model is the same as the checkpoint's.
-2. the test dataset is from the same source as the checkpoint's
+2. the test dataset is from the same source as the checkpoint's.
 
 
 ## Prediction for online test benchmark
