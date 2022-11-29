@@ -2,6 +2,7 @@
 
 ## Abstract
 
+![pipeline](assets/overall_pipeline_detailed.jpg)
 
 Our model sets a new state-of-the-art on the Scan2Cap online test benchmark.
 
@@ -22,6 +23,7 @@ plyfile
 'trimesh>=2.35.39,<2.35.40'
 'networkx>=2.2,<2.3'
 scipy
+cython
 ```
 
 It is also **REQUIRED** to install CUDA accelerated PointNet++ and gIoU support:
@@ -102,5 +104,5 @@ We also provide support for training and evaluating the network with all the abo
 
 The following command will generate a `.json` file under the folder of `checkpoint_dir`.
 ```
-python main.py --use_color --use_normal --dataset test_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 2 --test_ckpt .../checkpoint_best.pth --test_caption
+python main.py --use_color --use_normal --dataset test_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 2 --test_ckpt [...]/checkpoint_best.pth --test_caption
 ```
