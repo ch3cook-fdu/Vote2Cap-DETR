@@ -40,7 +40,9 @@ To build support for METEOR metric for evaluating captioning performance, we als
 
 ## Training and Evaluation
 
-Though we provide training scripts from scratch, you can also use the pretrained parameters as provided under the `pretrained` folder.
+Though we provide training commands from scratch, you can also start with some pretrained parameters provided under the `pretrained` folder and skip certain steps.
+
+### Training for Detection [optional]
 
 To train the Vote2Cap-DETR's detection branch for point cloud input without additional 2D features (aka [xyz + rgb + normal + height])
 
@@ -63,8 +65,7 @@ python main.py --use_multiview --use_normal --detector detector_Vote2Cap_DETR --
 **Note:** we also provide support for training and testing the VoteNet baseline by changing to `--detector detector_votenet` and also remember to modify the `checkpoint_dir`.
 
 
-
-## Training for 3D Dense Captioning
+### Training for 3D Dense Captioning [required]
 
 Before training for 3D dense captioning, remember to check whether there exists pretrained weights for detection branch under `./pretrained/`. 
 
@@ -82,9 +83,9 @@ Also you can evaluate the trained model with:
 python main.py --use_color --use_normal --dataset scene_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --test_ckpt exp_scanrefer/Vote2Cap_DETR_rgb/checkpoint_best.pth --test_caption
 ```
 
-### Tuning for Self-Critical Sequence Training
+### Tuning Caption head with Self-Critical Sequence Training [optional]
 
-You can train with:
+To tune the model with SCST, you can train with:
 
 ```{cmd}
 python scst_tuning.py --use_color --use_normal --base_lr 1e-6 --detector detector_Vote2Cap_DETR --captioner captioner_dcc --freeze_detector --use_beam_search --batchsize_per_gpu 2 --max_epoch 180 --pretrained_captioner exp_scanrefer/Vote2Cap_DETR_rgb/checkpoint_best.pth --checkpoint_dir exp_scanrefer/scst_Vote2Cap_DETR_rgb
@@ -97,12 +98,16 @@ python main.py --use_color --use_normal --dataset scene_scanrefer --vocabulary s
 ```
 
 We also provide support for training and evaluating the network with all the above listed commands on the Nr3D dataset by changing `--dataset scene_scanrefer` to `--dataset scene_nr3d`. 
-**REMEMBER** to also change that during evaluation.
+Please **make sure** that:
+
+1. the defined model is the same as the checkpoint's.
+2. the test dataset is from the same source as the checkpoint's
 
 
 ## Prediction for online test benchmark
 
 The following command will generate a `.json` file under the folder of `checkpoint_dir`.
+
 ```
 python main.py --use_color --use_normal --dataset test_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 2 --test_ckpt [...]/checkpoint_best.pth --test_caption
 ```
