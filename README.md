@@ -109,5 +109,5 @@ Please **make sure** that:
 The following command will generate a `.json` file under the folder of `checkpoint_dir`.
 
 ```
-python predict.py --use_color --use_normal --dataset test_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 2 --test_ckpt [...]/checkpoint_best.pth --test_caption
+python predict.py --use_color --use_normal --dataset test_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 8 --test_ckpt [...]/checkpoint_best.pth --test_caption
 ```
