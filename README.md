@@ -94,7 +94,7 @@ python scst_tuning.py --use_color --use_normal --base_lr 1e-6 --detector detecto
 and also evaluate the trained model:
 
 ```{cmd}
-python main.py --use_color --use_normal --dataset scene_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 2 --test_ckpt exp_scanrefer/scst_Vote2Cap_DETR_rgb/checkpoint_best.pth --test_caption
+python main.py --use_color --use_normal --dataset scene_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 8 --test_ckpt exp_scanrefer/scst_Vote2Cap_DETR_rgb/checkpoint_best.pth --test_caption
 ```
 
 We also provide support for training and evaluating the network with all the above listed commands on the Nr3D dataset by changing `--dataset scene_scanrefer` to `--dataset scene_nr3d`. 
@@ -109,5 +109,5 @@ Please **make sure** that:
 The following command will generate a `.json` file under the folder of `checkpoint_dir`.
 
 ```
-python main.py --use_color --use_normal --dataset test_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 2 --test_ckpt [...]/checkpoint_best.pth --test_caption
+python predict.py --use_color --use_normal --dataset test_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 2 --test_ckpt [...]/checkpoint_best.pth --test_caption
 ```
