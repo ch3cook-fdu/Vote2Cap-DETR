@@ -42,6 +42,7 @@ To build support for METEOR metric for evaluating captioning performance, we als
 
 Though we provide training commands from scratch, you can also start with some pretrained parameters provided under the `pretrained` folder and skip certain steps.
 
+
 ### Training for Detection [optional]
 
 To train the Vote2Cap-DETR's detection branch for point cloud input without additional 2D features (aka [xyz + rgb + normal + height])
