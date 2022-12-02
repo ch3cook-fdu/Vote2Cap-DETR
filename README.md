@@ -9,7 +9,7 @@ Our model sets a new state-of-the-art on the Scan2Cap online test benchmark.
 ## Dataset Preparation
 
 We follow [Scan2Cap](https://github.com/daveredrum/Scan2Cap)'s procedure to prepare datasets under the `data` folder.
-**NOTE** that we do not require the Scan2CAD dataset.
+The `Scan2CAD` dataset is not required in this repo.
 
 ## Environment
 
