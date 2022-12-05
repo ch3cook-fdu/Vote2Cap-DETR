@@ -57,7 +57,7 @@ To build support for METEOR metric for evaluating captioning performance, we als
 
 ## Training and Evaluation
 
-Though we provide training commands from scratch, you can also start with some pretrained parameters provided under the `pretrained` folder and skip certain steps.
+Though we provide training commands from scratch, you can also start with some pretrained parameters provided under the `./pretrained` folder and skip certain steps.
 
 
 ### [optional] Training for Detection
@@ -83,7 +83,7 @@ You can skip the above training schedule and play with the pretrained checkpoint
 
 ### Training for 3D Dense Captioning
 
-Before training for 3D dense captioning, remember to check whether there exists pretrained weights for detection branch under `./pretrained/`. 
+Before training for 3D dense captioning, remember to check whether there exists pretrained weights for detection branch under `./pretrained`. 
 
 To train the mdoel for 3D dense captioning with MLE training on ScanRefer:
 
