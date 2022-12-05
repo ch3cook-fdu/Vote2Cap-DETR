@@ -8,8 +8,12 @@ Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](ht
 
 ## Dataset Preparation
 
-We follow [Scan2Cap](https://github.com/daveredrum/Scan2Cap)'s procedure to prepare datasets under the `data` folder.
-The `Scan2CAD` dataset is not required in this repo.
+We follow [Scan2Cap](https://github.com/daveredrum/Scan2Cap)'s procedure to prepare datasets under the `data` folder (`Scan2CAD` not required).
+[Optional] To prepare for Nr3D, it is also required to [download](https://referit3d.github.io/#dataset) and put the Nr3D under `data`, and run the following command to process data.
+
+```{bash}
+cd data; python parse_nr3d.py
+```
 
 ## Environment
 
