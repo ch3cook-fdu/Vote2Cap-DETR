@@ -1,6 +1,6 @@
 # End-to-End 3D Dense Captioning with Vote2Cap-DETR
 
-## Abstract
+Official implementation of "End-to-End 3D Dense Captioning with Vote2Cap-DETR".
 
 ![pipeline](assets/overall_pipeline_detailed.jpg)
 
