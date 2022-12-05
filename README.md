@@ -9,6 +9,7 @@ Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](ht
 ## Dataset Preparation
 
 We follow [Scan2Cap](https://github.com/daveredrum/Scan2Cap)'s procedure to prepare datasets under the `data` folder (`Scan2CAD` not required).
+
 [Optional] To prepare for Nr3D, it is also required to [download](https://referit3d.github.io/#dataset) and put the Nr3D under `data`, and run the following command to process data.
 
 ```{bash}
@@ -62,7 +63,9 @@ python main.py --use_color --use_normal --detector detector_Vote2Cap_DETR --test
 ```
 
 To train with additional 2D features (aka [xyz + multiview + normal + height]) rather than RGB inputs, you can replace `--use_color` to `--use_multiview`.
+
 **Additionally**, we also provide support for training and testing the VoteNet baseline by changing to `--detector detector_votenet`.
+
 You can skip the above training schedule and play with the pretrained checkpoints provided in `./pretrained` folder.
 
 
@@ -93,6 +96,7 @@ We also provide support for training and evaluating the network with all the abo
 ## Prediction for online test benchmark
 
 Our model also provides prediction codes for ScanRefer online test benchmark.
+
 The following command will generate a `.json` file under the folder of `checkpoint_dir`.
 
 ```
