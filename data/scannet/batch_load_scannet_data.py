@@ -13,7 +13,7 @@ import numpy as np
 from load_scannet_data import export
 import pdb
 
-SCANNET_DIR = '/remote-home/share/Dataset_3D_Group/scannet/scans'
+SCANNET_DIR = '.../scans'   # TODO: change this
 SCAN_NAMES = sorted([line.rstrip() for line in open('meta_data/scannetv2.txt')])
 LABEL_MAP_FILE = 'meta_data/scannetv2-labels.combined.tsv'
 DONOTCARE_CLASS_IDS = np.array([])

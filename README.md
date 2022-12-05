@@ -4,13 +4,25 @@
 
 ![pipeline](assets/overall_pipeline_detailed.jpg)
 
-Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
+- 2022-11-17. Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
 
 ## Dataset Preparation
 
-We follow [Scan2Cap](https://github.com/daveredrum/Scan2Cap)'s procedure to prepare datasets under the `data` folder (`Scan2CAD` not required).
+We follow [Scan2Cap](https://github.com/daveredrum/Scan2Cap)'s procedure to prepare datasets under the `./data` folder (`Scan2CAD` not required).
 
-[Optional] To prepare for Nr3D, it is also required to [download](https://referit3d.github.io/#dataset) and put the Nr3D under `data`, and run the following command to process data.
+**Prepareing 3D point clouds from ScanNet**. 
+Download the [ScanNetV2 dataset](https://github.com/ch3cook-fdu/Vote2Cap-DETR/tree/master/data/scannet) and change the `SCANNET_DIR` to the `scans` folder in `data/scannet/batch_load_scannet_data.py` (line 16), and run the following commands.
+
+```
+cd data/scannet/
+python batch_load_scannet_data.py
+```
+
+**Prepareing Language Annotations**. 
+Please follow [this](https://github.com/daveredrum/ScanRefer) to download the ScanRefer dataset, and put it under `./data`.
+
+[Optional] To prepare for Nr3D, it is also required to [download](https://referit3d.github.io/#dataset) and put the Nr3D under `./data`.
+Since it's in `.csv` format, it is required to run the following command to process data.
 
 ```{bash}
 cd data; python parse_nr3d.py
