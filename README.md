@@ -6,6 +6,8 @@
 
 - 2022-11-17. Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
 
+![online](assets/scanrefer-online-test.png)
+
 ## Dataset Preparation
 
 We follow [Scan2Cap](https://github.com/daveredrum/Scan2Cap)'s procedure to prepare datasets under the `./data` folder (`Scan2CAD` not required).
