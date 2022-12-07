@@ -4,9 +4,16 @@ Official implementation of "End-to-End 3D Dense Captioning with Vote2Cap-DETR".
 
 ![pipeline](assets/overall_pipeline_detailed.jpg)
 
-- 2022-11-17. Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
+## Introduction
 
+
+
+## Status
+
+- 2022-11-17. Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
 ![online](assets/scanrefer-online-test.png)
+
+- 2022-12-7. Codes are released.
 
 ## Dataset Preparation
 
