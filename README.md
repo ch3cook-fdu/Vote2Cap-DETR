@@ -6,9 +6,6 @@ Official implementation of "End-to-End 3D Dense Captioning with Vote2Cap-DETR".
 
 This code is based on the implementation of [3DETR](https://github.com/facebookresearch/3detr), [Scan2Cap](https://github.com/daveredrum/Scan2Cap), and [VoteNet](https://github.com/facebookresearch/votenet).
 
-## Introduction
-
-
 
 ## Status
 
