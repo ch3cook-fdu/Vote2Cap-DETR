@@ -134,7 +134,7 @@ If you find our work helpful, please kindly cite our paper:
 
 ## License
 
-Vote2Cap-DETR is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+Vote2Cap-DETR is licensed under a [MIT License](LICENSE).
 
 ## Contact
 
