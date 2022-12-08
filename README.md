@@ -7,7 +7,7 @@ Official implementation of "End-to-End 3D Dense Captioning with Vote2Cap-DETR".
 This code is based on the implementation of [3DETR](https://github.com/facebookresearch/3detr), [Scan2Cap](https://github.com/daveredrum/Scan2Cap), and [VoteNet](https://github.com/facebookresearch/votenet).
 
 
-## Status
+## News
 
 - 2022-11-17. Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
 ![online](assets/scanrefer-online-test.png)
@@ -63,7 +63,7 @@ python cython_compile.py build_ext --inplace
 
 To build support for METEOR metric for evaluating captioning performance, we also installed the `java` package.
 
-## Training and Evaluation
+## Training and Evaluating your own models
 
 Though we provide training commands from scratch, you can also start with some pretrained parameters provided under the `./pretrained` folder and skip certain steps.
 

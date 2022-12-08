@@ -51,7 +51,7 @@ SCANREFER = {
     )
 }
 vocabulary = SCANREFER['vocabulary']
-embeddings = pickle.load(open(os.path.join(DATA_ROOT, 'glove.p'), "rb"))
+# embeddings = pickle.load(open(os.path.join(DATA_ROOT, 'glove.p'), "rb"))
 
 
 class ScanReferTokenizer:
