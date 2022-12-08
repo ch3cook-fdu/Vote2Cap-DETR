@@ -85,7 +85,7 @@ python main.py --use_color --use_normal --detector detector_Vote2Cap_DETR --test
 
 To train with additional 2D features (aka [xyz + multiview + normal + height]) rather than RGB inputs, you can replace `--use_color` to `--use_multiview`.
 
-**Additionally**, we also provide support for training and testing the VoteNet baseline by changing to `--detector detector_votenet`.
+**Additionally**, we also provide support for training and testing the VoteNet baseline by changing `--detector detector_Vote2Cap_DETR` to `--detector detector_votenet`.
 
 You can skip the above training schedule and play with the pretrained checkpoints provided in `./pretrained` folder.
 
@@ -118,7 +118,7 @@ We also provide support for training and evaluating the network with all the abo
 
 Our model also provides prediction codes for ScanRefer online test benchmark.
 
-The following command will generate a `.json` file under the folder of `checkpoint_dir`.
+The following command will generate a `.json` file under the folder defined by `--checkpoint_dir`.
 
 ```
 python predict.py --use_color --use_normal --dataset test_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 8 --test_ckpt [...]/checkpoint_best.pth --test_caption
@@ -126,10 +126,16 @@ python predict.py --use_color --use_normal --dataset test_scanrefer --vocabulary
 
 ## BibTex
 
-If you find our work helpful, please kindly cite:
+If you find our work helpful, please kindly cite our paper:
 
 ```
 
 ```
 
 ## License
+
+Vote2Cap-DETR is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+
+## Contact
+
+If you have any questions or suggestions about this repo, please feel free to open issues or [contact me](csjch3cook@gmail.com)!
