@@ -138,4 +138,4 @@ Vote2Cap-DETR is licensed under a [MIT License](LICENSE).
 
 ## Contact
 
-If you have any questions or suggestions about this repo, please feel free to open issues or [contact me](csjch3cook@gmail.com)!
+If you have any questions or suggestions about this repo, please feel free to open issues or contact me (csjch3cook@gmail.com)!
