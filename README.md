@@ -10,9 +10,10 @@ This code is based on the implementation of [3DETR](https://github.com/facebookr
 ## News
 
 - 2022-11-17. Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
-![online](assets/scanrefer-online-test.png)
 
 - 2022-12-7. Codes are released.
+
+![online](assets/scanrefer-online-test.png)
 
 ## Dataset Preparation
 
@@ -122,3 +123,13 @@ The following command will generate a `.json` file under the folder of `checkpoi
 ```
 python predict.py --use_color --use_normal --dataset test_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 8 --test_ckpt [...]/checkpoint_best.pth --test_caption
 ```
+
+## BibTex
+
+If you find our work helpful, please kindly cite:
+
+```
+
+```
+
+## License
