@@ -50,6 +50,7 @@ plyfile
 'networkx>=2.2,<2.3'
 scipy
 cython
+transformers
 ```
 
 It is also **REQUIRED** to compile the CUDA accelerated PointNet++ and gIoU support:
