@@ -1,3 +1,4 @@
+import os
 import json, pickle
 import pandas as pd
 
@@ -7,7 +8,6 @@ from typing import List
 from tqdm import tqdm
 from ast import literal_eval
 
-glove = pickle.load(open('glove.p', "rb"))
 scannet_meta_root = os.path.join('scannet', 'meta_data')
 scannetv2_train = open(os.path.join(scannet_meta_root, 'scannetv2_train.txt'), 'r').read().split('\n')
 scannetv2_val = open(os.path.join(scannet_meta_root, 'scannetv2_val.txt'), 'r').read().split('\n')
@@ -64,30 +64,31 @@ with open('nr3d_val.txt', 'w') as f:
 
 
 ## build vocabulary
+if not os.path.isfile('nr3d_vocabulary.json'):
+    glove = pickle.load(open('glove.p', "rb"))
+    all_words = reduce(lambda x, y: x + y, [data["token"] for data in nr3d_train])
+    word_counter = Counter(all_words)
+    word_counter = sorted(
+        [(k, v) for k, v in word_counter.items() if k in glove], 
+        key=lambda x: x[1], reverse=True
+    )
+    word_list = [k for k, _ in word_counter]
     
-all_words = reduce(lambda x, y: x + y, [data["token"] for data in nr3d_train])
-word_counter = Counter(all_words)
-word_counter = sorted(
-    [(k, v) for k, v in word_counter.items() if k in glove], 
-    key=lambda x: x[1], reverse=True
-)
-word_list = [k for k, _ in word_counter]
-
-# build vocabulary
-word2idx, idx2word = {}, {}
-spw = ["pad_", "unk", "sos", "eos"] # NOTE distinguish padding token "pad_" and the actual word "pad"
-for i, w in enumerate(word_list):
-    shifted_i = i + len(spw)
-    word2idx[w] = shifted_i
-    idx2word[shifted_i] = w
-
-# add special words into vocabulary
-for i, w in enumerate(spw):
-    word2idx[w] = i
-    idx2word[i] = w
-
-vocab = {
-    "word2idx": word2idx,
-    "idx2word": idx2word
-}
-json.dump(vocab, open('nr3d_vocabulary.json', "w"), indent=4)
+    # build vocabulary
+    word2idx, idx2word = {}, {}
+    spw = ["pad_", "unk", "sos", "eos"] # NOTE distinguish padding token "pad_" and the actual word "pad"
+    for i, w in enumerate(word_list):
+        shifted_i = i + len(spw)
+        word2idx[w] = shifted_i
+        idx2word[shifted_i] = w
+    
+    # add special words into vocabulary
+    for i, w in enumerate(spw):
+        word2idx[w] = i
+        idx2word[i] = w
+    
+    vocab = {
+        "word2idx": word2idx,
+        "idx2word": idx2word
+    }
+    json.dump(vocab, open('nr3d_vocabulary.json', "w"), indent=4)
