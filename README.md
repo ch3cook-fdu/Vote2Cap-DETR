@@ -1,6 +1,6 @@
 # End-to-End 3D Dense Captioning with Vote2Cap-DETR
 
-Official implementation of "End-to-End 3D Dense Captioning with Vote2Cap-DETR".
+Official implementation of "End-to-End 3D Dense Captioning with Vote2Cap-DETR" ([arXiv](https://arxiv.org/abs/2301.02508)).
 
 ![pipeline](assets/overall_pipeline_detailed.jpg)
 
@@ -12,6 +12,8 @@ This code is based on the implementation of [3DETR](https://github.com/facebookr
 - 2022-11-17. Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
 
 - 2022-12-15. Codes are released.
+
+- 2023-01-06. [ArXiv](https://arxiv.org/abs/2301.02508) version released.
 
 ![online](assets/scanrefer-online-test.png)
 
