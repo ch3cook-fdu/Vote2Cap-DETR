@@ -15,6 +15,8 @@ This code is based on the implementation of [3DETR](https://github.com/facebookr
 
 - 2023-01-06. [ArXiv](https://arxiv.org/abs/2301.02508) version released.
 
+- 2023-02-28. Our paper is accepted by CVPR2023.
+
 ![online](assets/scanrefer-online-test.png)
 
 ## Dataset Preparation
