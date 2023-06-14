@@ -11,12 +11,6 @@ Thanks to the implementation of [3DETR](https://github.com/facebookresearch/3det
 
 - 2022-11-17. Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
 
-- 2022-12-15. Codes are ready.
-
-- 2023-01-06. [ArXiv](https://arxiv.org/abs/2301.02508) version released.
-
-- 2023-02-28. Our paper is accepted by CVPR2023.
-
 ![online](assets/scanrefer-online-test.png)
 
 ## Dataset Preparation
@@ -134,7 +128,13 @@ python predict.py --use_color --use_normal --dataset test_scanrefer --vocabulary
 If you find our work helpful, please kindly cite our paper:
 
 ```
-
+@inproceedings{chen2023end,
+  title={End-to-end 3d dense captioning with vote2cap-detr},
+  author={Chen, Sijin and Zhu, Hongyuan and Chen, Xin and Lei, Yinjie and Yu, Gang and Chen, Tao},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={11124--11133},
+  year={2023}
+}
 ```
 
 ## License
