@@ -18,7 +18,7 @@ class CaptionNet(nn.Module):
         else:
             return []
     
-    def __init__(self, args, dataset_config):
+    def __init__(self, args, dataset_config, train_dataset):
         super(CaptionNet, self).__init__()
         
         self.freeze_detector = args.freeze_detector
@@ -35,7 +35,7 @@ class CaptionNet(nn.Module):
             captioner_module = importlib.import_module(
                 f'models.{args.captioner}.captioner'
             )
-            self.captioner = captioner_module.captioner(args)
+            self.captioner = captioner_module.captioner(args, train_dataset)
         
         self.train()
         
