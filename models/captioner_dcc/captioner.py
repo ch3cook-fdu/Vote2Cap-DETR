@@ -85,7 +85,7 @@ def position_embedding(max_len: int, d_model: int) -> Tensor:
 
 class captioner(nn.Module):
 
-    def __init__(self, args):
+    def __init__(self, args, train_dataset):
         super(captioner, self).__init__()
         
         self.embedding_size = 256
@@ -94,10 +94,7 @@ class captioner(nn.Module):
         self.max_des_len = args.max_des_len
         
         ## initialize tokenizer for batch decoding
-        dataset = importlib.import_module(f'datasets.{args.dataset}')
-        ScanReferTokenizer = dataset.ScanReferTokenizer
-        
-        self.tokenizer = ScanReferTokenizer(dataset.vocabulary['word2idx'])
+        self.tokenizer = train_dataset.tokenizer
         self.nvocabs = len(self.tokenizer)
         
         ## for label assignment
