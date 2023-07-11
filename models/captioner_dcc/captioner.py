@@ -89,7 +89,6 @@ class captioner(nn.Module):
         super(captioner, self).__init__()
         
         self.embedding_size = 256
-        self.max_added_tokens = 2048
         self.max_positions = 64
         self.max_des_len = args.max_des_len
         
@@ -104,7 +103,7 @@ class captioner(nn.Module):
         
         ## caption generation cores
         gpt2_config = GPT2Config(
-            vocab_size=self.nvocabs + self.max_added_tokens,
+            vocab_size=self.nvocabs,
             n_positions=self.max_positions,
             n_embd=self.embedding_size,
             n_layer=2,
@@ -117,7 +116,6 @@ class captioner(nn.Module):
         self.transformer.transformer.wpe = nn.Embedding.from_pretrained(
             position_embedding(self.max_positions, self.embedding_size)
         )
-        self.transformer.lm_head = nn.Linear(self.embedding_size, self.nvocabs)
         
         ## for proposal feature projection
         self.feature_projector = nn.Sequential(
