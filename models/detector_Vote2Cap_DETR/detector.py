@@ -306,18 +306,13 @@ class Model_Vote2Cap_DETR(nn.Module):
         ]
         
         ## feature encoding
-        # encoder features: npoints x batch x channel
+        # encoder features: npoints x batch x channel -> batch x channel x npoints
         enc_xyz, enc_features, enc_inds = self.run_encoder(point_clouds)
-        
-        ## vote query generation
-        query_outputs = self.vote_query_generator(
-            enc_xyz, enc_features.permute(1, 2, 0)
-        )
-        query_outputs['seed_inds'] = enc_inds
-        
-        # retain the original encoder features
         enc_features = enc_features.permute(1, 2, 0)
         
+        ## vote query generation
+        query_outputs = self.vote_query_generator(enc_xyz, enc_features)
+        query_outputs['seed_inds'] = enc_inds
         query_xyz = query_outputs['query_xyz']
         query_features = query_outputs["query_features"]
         
