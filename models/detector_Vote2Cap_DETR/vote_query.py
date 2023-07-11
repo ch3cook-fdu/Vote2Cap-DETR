@@ -64,7 +64,6 @@ class VoteQuery(nn.Module):
         return {
             'vote_xyz': vote_xyz,               # batch x npenc x 3
             'seed_xyz': encode_xyz,             # batch x npenc x 3
-            'enc_features': encode_features,    # batch x channel x npenc
             'query_xyz': query_xyz,             # batch x npenc x 3
             'query_features': query_features    # batch x channel x npquery
         }
