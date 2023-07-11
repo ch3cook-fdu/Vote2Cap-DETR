@@ -8,12 +8,7 @@ from utils.dist import all_reduce_average
 from utils.misc import huber_loss
 from scipy.optimize import linear_sum_assignment
 
-
-FAR_THRESHOLD = 0.6
-NEAR_THRESHOLD = 0.3
 GT_VOTE_FACTOR = 3 # number of GT votes per point
-OBJECTNESS_CLS_WEIGHTS = [0.2,0.8] # put larger weights on positive objectness
-
 
 def nn_distance(pc1, pc2, l1smooth=False, delta=1.0, l1=False, return_distance=False):
     """
