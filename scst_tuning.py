@@ -153,7 +153,7 @@ def main(args):
     
     ### build datasets and dataloaders
     dataset_config, datasets, dataloaders = build_dataset(args)
-    model = CaptionNet(args, dataset_config).cuda()
+    model = CaptionNet(args, dataset_config, datasets['train']).cuda()
 
     assert (
         args.checkpoint_dir is not None
