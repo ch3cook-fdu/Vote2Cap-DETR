@@ -46,7 +46,7 @@ python setup.py install
 ```
 
 ```{bash}
-cd ../../utils
+cd utils
 python cython_compile.py build_ext --inplace
 ```
 
