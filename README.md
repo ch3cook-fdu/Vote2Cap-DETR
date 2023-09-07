@@ -2,7 +2,7 @@
 
 Official implementation of ["End-to-End 3D Dense Captioning with Vote2Cap-DETR"](https://arxiv.org/abs/2301.02508) and ["Vote2Cap-DETR++: Decoupling Localization and Describing for End-to-End 3D Dense Captioning"](https://arxiv.org/abs/2309.02999).
 
-![pipeline](assets/overall_pipeline_detailed.jpg)
+![pipeline](assets/Vote2Cap-DETR_and_Vote2Cap-DETR++.jpg)
 
 Thanks to the implementation of [3DETR](https://github.com/facebookresearch/3detr), [Scan2Cap](https://github.com/daveredrum/Scan2Cap), and [VoteNet](https://github.com/facebookresearch/votenet).
 
