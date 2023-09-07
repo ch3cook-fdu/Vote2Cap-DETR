@@ -53,6 +53,12 @@ cython
 transformers
 ```
 
+If you wish to use multi-view feature extracted by [Scan2Cap](https://github.com/daveredrum/Scan2Cap), you should also install `h5py`:
+
+```{bash}
+pip install h5py
+```
+
 It is also **REQUIRED** to compile the CUDA accelerated PointNet++ and gIoU support:
 
 ```{bash}
