@@ -7,7 +7,7 @@ Official implementation of ["End-to-End 3D Dense Captioning with Vote2Cap-DETR"]
 Thanks to the implementation of [3DETR](https://github.com/facebookresearch/3detr), [Scan2Cap](https://github.com/daveredrum/Scan2Cap), and [VoteNet](https://github.com/facebookresearch/votenet).
 
 
-## News
+## 0. News
 
 - 2023-09-07. 🤗 We further propose an advanced model at [arXiV](https://arxiv.org/pdf/2309.02999.pdf), and release some of the pre-trained weights at [huggingface](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
 
@@ -16,7 +16,7 @@ Thanks to the implementation of [3DETR](https://github.com/facebookresearch/3det
 ![pipeline](assets/scanrefer-online-test.png)
 
 
-## Environment
+## 1. Environment
 
 Our code is tested with PyTorch 1.7.1, CUDA 11.0 and Python 3.8.13.
 Besides `pytorch`, this repo also requires the following Python dependencies:
@@ -52,9 +52,9 @@ To build support for METEOR metric for evaluating captioning performance, we als
 
 
 
-## Dataset Preparation
+## 2. Dataset Preparation
 
-We follow [Scan2Cap](https://github.com/daveredrum/Scan2Cap)'s procedure to prepare datasets under the `./data` folder (`Scan2CAD` not required).
+We follow [Scan2Cap](https://github.com/daveredrum/Scan2Cap)'s procedure to prepare datasets under the `./data` folder (`Scan2CAD` **NOT** required).
 
 **Prepareing 3D point clouds from ScanNet**. 
 Download the [ScanNetV2 dataset](https://github.com/ch3cook-fdu/Vote2Cap-DETR/tree/master/data/scannet) and change the `SCANNET_DIR` to the `scans` folder in `data/scannet/batch_load_scannet_data.py` (line 16), and run the following commands.
@@ -75,17 +75,19 @@ cd data; python parse_nr3d.py
 ```
 
 
-## Pretrained Weights
+## 3. Download Pretrained Weights
 
-You can download all the ready-to-use weights at [https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
+You can download all the ready-to-use weights at [huggingface](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
 
 
-## Training and Evaluating your own models
+## 4. Training and Evaluating your own models
 
 Though we provide training commands from scratch, you can also start with some pretrained parameters provided under the `./pretrained` folder and skip certain steps.
 
 
-### [optional] Training for Detection
+**[optional] 4.0 Pre-Training for Detection**
+
+This procedure is to generate the pre-trained weights in `./pretrained` folder.
 
 To train the Vote2Cap-DETR's detection branch for point cloud input without additional 2D features (aka [xyz + rgb + normal + height])
 
@@ -101,36 +103,38 @@ python main.py --use_color --use_normal --detector detector_Vote2Cap_DETR --test
 
 To train with additional 2D features (aka [xyz + multiview + normal + height]) rather than RGB inputs, you can replace `--use_color` to `--use_multiview`.
 
-**Additionally**, we also provide support for training and testing the VoteNet baseline by changing `--detector detector_Vote2Cap_DETR` to `--detector detector_votenet`.
 
-You can skip the above training schedule and play with the pretrained checkpoints provided in `./pretrained` folder.
+**4.1 MLE Training for 3D Dense Captioning**
 
-
-### Training for 3D Dense Captioning
-
-Before training for 3D dense captioning, remember to check whether there exists pretrained weights for detection branch under `./pretrained`. 
-
-To train the mdoel for 3D dense captioning with MLE training on ScanRefer:
+Please make sure there are pretrained checkpoints under the `./pretrained` directory. To train the mdoel for 3D dense captioning with MLE training on ScanRefer:
 
 ```{bash}
 python main.py --use_color --use_normal --use_pretrained --warm_lr_epochs 0 --pretrained_params_lr 1e-6 --use_beam_search --base_lr 1e-4 --dataset scene_scanrefer --eval_metric caption --vocabulary scanrefer --detector detector_Vote2Cap_DETR --captioner captioner_dcc --checkpoint_dir exp_scanrefer/Vote2Cap_DETR_rgb --max_epoch 720
 ```
 
+Change `--dataset scene_scanrefer` to `--dataset scene_nr3d` to train the model for the Nr3D dataset.
+
+**4.2 Self-Critical Sequence Training for 3D Dense Captioning**
+
 To train the model with Self-Critical Sequence Training(SCST), you can use the following command:
 
 ```{cmd}
-python scst_tuning.py --use_color --use_normal --base_lr 1e-6 --detector detector_Vote2Cap_DETR --captioner captioner_dcc --freeze_detector --use_beam_search --batchsize_per_gpu 2 --max_epoch 180 --pretrained_captioner exp_scanrefer/Vote2Cap_DETR_rgb/checkpoint_best.pth --checkpoint_dir exp_scanrefer/scst_Vote2Cap_DETR_rgb
+python scst_tuning.py --use_color --use_normal --base_lr 1e-6 --detector detector_Vote2Cap_DETR --captioner captioner_dcc --freeze_detector --use_beam_search --batchsize_per_gpu 2 --max_epoch 180 --pretrained_captioner [...]/checkpoint_best.pth --checkpoint_dir exp_scanrefer/scst_Vote2Cap_DETR_rgb
 ```
+
+Change `--dataset scene_scanrefer` to `--dataset scene_nr3d` to train the model for the Nr3D dataset.
+
+**4.3 Evaluating the Weights**
 
 You can evaluate the trained model in each step by specifying different checkpont directories:
 
 ```{cmd}
-python main.py --use_color --use_normal --dataset scene_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 8 --test_ckpt exp_scanrefer/.../checkpoint_best.pth --test_caption
+python main.py --use_color --use_normal --dataset scene_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 8 --test_ckpt [...]/checkpoint_best.pth --test_caption
 ```
 
-We also provide support for training and evaluating the network with all the above listed commands on the Nr3D dataset by changing `--dataset scene_scanrefer` to `--dataset scene_nr3d`. 
+Change `--dataset scene_scanrefer` to `--dataset scene_nr3d` to train the model for the Nr3D dataset.
 
-## Prediction for online test benchmark
+## 5. Make Predictions for online test benchmark
 
 Our model also provides prediction codes for ScanRefer online test benchmark.
 
@@ -140,7 +144,7 @@ The following command will generate a `.json` file under the folder defined by `
 python predict.py --use_color --use_normal --dataset test_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 8 --test_ckpt [...]/checkpoint_best.pth
 ```
 
-## BibTex
+## 6. BibTex
 
 If you find our work helpful, please kindly cite our paper:
 
@@ -154,10 +158,10 @@ If you find our work helpful, please kindly cite our paper:
 }
 ```
 
-## License
+## 7. License
 
 Vote2Cap-DETR is licensed under a [MIT License](LICENSE).
 
-## Contact
+## 8. Contact
 
 If you have any questions or suggestions about this repo, please feel free to open issues or contact me (csjch3cook@gmail.com)!
