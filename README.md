@@ -9,7 +9,7 @@ Thanks to the implementation of [3DETR](https://github.com/facebookresearch/3det
 
 ## News
 
-- 2023-09-07. We release some of the pre-trained weights at [huggingface](https://huggingface.co/CH3COOK/Vote2Cap-DETR/tree/main).
+- 2023-09-07. We release some of the pre-trained weights at [huggingface](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
 
 - 2023-09-06. We further propose an advanced model at [arXiV](https://arxiv.org/pdf/2309.02999.pdf), which surpasses the original Vote2Cap-DETR model and achieves 78.16% C@0.5 (+4.39%) and 47.62% C@0.5 (+2.09%) on ScanRefer and Nr3D respectively.
 
@@ -74,7 +74,7 @@ To build support for METEOR metric for evaluating captioning performance, we als
 
 ## Pretrained Weights
 
-You can download all the ready-to-use weights at [https://huggingface.co/CH3COOK/Vote2Cap-DETR/tree/main](https://huggingface.co/CH3COOK/Vote2Cap-DETR/tree/main).
+You can download all the ready-to-use weights at [https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
 
 
 ## Training and Evaluating your own models
