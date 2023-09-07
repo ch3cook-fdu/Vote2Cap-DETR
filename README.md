@@ -9,7 +9,7 @@ Thanks to the implementation of [3DETR](https://github.com/facebookresearch/3det
 
 ## News
 
-- 2023-09-07. We further propose an advanced model at [arXiV](https://arxiv.org/pdf/2309.02999.pdf), which surpasses the original Vote2Cap-DETR model and achieves 78.16% C@0.5 (<span style="color: green;">+4.39%</span>) and 47.62% C@0.5 (+2.09%) on ScanRefer and Nr3D respectively.
+- 2023-09-07. We further propose an advanced model at [arXiV](https://arxiv.org/pdf/2309.02999.pdf), which surpasses the original Vote2Cap-DETR model and achieves 78.16% C@0.5 (+4.39%) and 47.62% C@0.5 (+2.09%) on ScanRefer and Nr3D respectively.
 
 - 2022-11-17. Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
 
