@@ -162,7 +162,7 @@ If you find our work helpful, please kindly cite our paper:
 
 ## 7. License
 
-Vote2Cap-DETR is licensed under a [MIT License](LICENSE).
+Vote2Cap-DETR and Vote2Cap-DETR++ are both licensed under a [MIT License](LICENSE).
 
 ## 8. Contact
 
