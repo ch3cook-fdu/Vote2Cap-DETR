@@ -71,6 +71,12 @@ python cython_compile.py build_ext --inplace
 
 To build support for METEOR metric for evaluating captioning performance, we also installed the `java` package.
 
+
+## Pretrained Weights
+
+You can download all the ready-to-use weights at [https://huggingface.co/CH3COOK/Vote2Cap-DETR/tree/main](https://huggingface.co/CH3COOK/Vote2Cap-DETR/tree/main).
+
+
 ## Training and Evaluating your own models
 
 Though we provide training commands from scratch, you can also start with some pretrained parameters provided under the `./pretrained` folder and skip certain steps.
