@@ -43,7 +43,9 @@ It is also **REQUIRED** to compile the CUDA accelerated PointNet++ and gIoU supp
 ```{bash}
 cd third_party/pointnet2
 python setup.py install
+```
 
+```{bash}
 cd ../../utils
 python cython_compile.py build_ext --inplace
 ```
