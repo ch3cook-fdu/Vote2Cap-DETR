@@ -9,33 +9,12 @@ Thanks to the implementation of [3DETR](https://github.com/facebookresearch/3det
 
 ## News
 
-- 2023-09-07. We release some of the pre-trained weights at [huggingface](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
+- 2023-09-07. 🤗 We further propose an advanced model at [arXiV](https://arxiv.org/pdf/2309.02999.pdf), and release some of the pre-trained weights at [huggingface](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
 
-- 2023-09-06. We further propose an advanced model at [arXiV](https://arxiv.org/pdf/2309.02999.pdf), which surpasses the original Vote2Cap-DETR model and achieves 78.16% C@0.5 (+4.39%) and 47.62% C@0.5 (+2.09%) on ScanRefer and Nr3D respectively.
+- 2022-11-17. 🚩 Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
 
-- 2022-11-17. Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
+![pipeline](assets/scanrefer-online-test.png)
 
-## Dataset Preparation
-
-We follow [Scan2Cap](https://github.com/daveredrum/Scan2Cap)'s procedure to prepare datasets under the `./data` folder (`Scan2CAD` not required).
-
-**Prepareing 3D point clouds from ScanNet**. 
-Download the [ScanNetV2 dataset](https://github.com/ch3cook-fdu/Vote2Cap-DETR/tree/master/data/scannet) and change the `SCANNET_DIR` to the `scans` folder in `data/scannet/batch_load_scannet_data.py` (line 16), and run the following commands.
-
-```
-cd data/scannet/
-python batch_load_scannet_data.py
-```
-
-**Prepareing Language Annotations**. 
-Please follow [this](https://github.com/daveredrum/ScanRefer) to download the ScanRefer dataset, and put it under `./data`.
-
-[Optional] To prepare for Nr3D, it is also required to [download](https://referit3d.github.io/#dataset) and put the Nr3D under `./data`.
-Since it's in `.csv` format, it is required to run the following command to process data.
-
-```{bash}
-cd data; python parse_nr3d.py
-```
 
 ## Environment
 
@@ -70,6 +49,30 @@ python cython_compile.py build_ext --inplace
 ```
 
 To build support for METEOR metric for evaluating captioning performance, we also installed the `java` package.
+
+
+
+## Dataset Preparation
+
+We follow [Scan2Cap](https://github.com/daveredrum/Scan2Cap)'s procedure to prepare datasets under the `./data` folder (`Scan2CAD` not required).
+
+**Prepareing 3D point clouds from ScanNet**. 
+Download the [ScanNetV2 dataset](https://github.com/ch3cook-fdu/Vote2Cap-DETR/tree/master/data/scannet) and change the `SCANNET_DIR` to the `scans` folder in `data/scannet/batch_load_scannet_data.py` (line 16), and run the following commands.
+
+```
+cd data/scannet/
+python batch_load_scannet_data.py
+```
+
+**Prepareing Language Annotations**. 
+Please follow [this](https://github.com/daveredrum/ScanRefer) to download the ScanRefer dataset, and put it under `./data`.
+
+[Optional] To prepare for Nr3D, it is also required to [download](https://referit3d.github.io/#dataset) and put the Nr3D under `./data`.
+Since it's in `.csv` format, it is required to run the following command to process data.
+
+```{bash}
+cd data; python parse_nr3d.py
+```
 
 
 ## Pretrained Weights
