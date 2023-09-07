@@ -1,6 +1,6 @@
 # End-to-End 3D Dense Captioning with Vote2Cap-DETR (CVPR 2023)
 
-Official implementation of ["End-to-End 3D Dense Captioning with Vote2Cap-DETR"](https://arxiv.org/abs/2301.02508).
+Official implementation of ["End-to-End 3D Dense Captioning with Vote2Cap-DETR"](https://arxiv.org/abs/2301.02508) and ["Vote2Cap-DETR++: Decoupling Localization and Describing for End-to-End 3D Dense Captioning"](https://arxiv.org/abs/2309.02999).
 
 ![pipeline](assets/overall_pipeline_detailed.jpg)
 
