@@ -158,6 +158,14 @@ If you find our work helpful, please kindly cite our paper:
   pages={11124--11133},
   year={2023}
 }
+@misc{chen2023vote2capdetr,
+      title={Vote2Cap-DETR++: Decoupling Localization and Describing for End-to-End 3D Dense Captioning}, 
+      author={Sijin Chen and Hongyuan Zhu and Mingsheng Li and Xin Chen and Peng Guo and Yinjie Lei and Gang Yu and Taihao Li and Tao Chen},
+      year={2023},
+      eprint={2309.02999},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
 ```
 
 ## 7. License
