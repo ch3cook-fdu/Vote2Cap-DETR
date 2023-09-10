@@ -58,7 +58,7 @@ To build support for METEOR metric for evaluating captioning performance, we als
 
 We follow [Scan2Cap](https://github.com/daveredrum/Scan2Cap)'s procedure to prepare datasets under the `./data` folder (`Scan2CAD` **NOT** required).
 
-**Prepareing 3D point clouds from ScanNet**. 
+**Preparing 3D point clouds from ScanNet**. 
 Download the [ScanNetV2 dataset](https://github.com/ch3cook-fdu/Vote2Cap-DETR/tree/master/data/scannet) and change the `SCANNET_DIR` to the `scans` folder in `data/scannet/batch_load_scannet_data.py` (line 16), and run the following commands.
 
 ```
@@ -66,7 +66,7 @@ cd data/scannet/
 python batch_load_scannet_data.py
 ```
 
-**Prepareing Language Annotations**. 
+**Preparing Language Annotations**. 
 Please follow [this](https://github.com/daveredrum/ScanRefer) to download the ScanRefer dataset, and put it under `./data`.
 
 [Optional] To prepare for Nr3D, it is also required to [download](https://referit3d.github.io/#dataset) and put the Nr3D under `./data`.
