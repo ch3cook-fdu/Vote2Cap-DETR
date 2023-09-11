@@ -76,7 +76,6 @@ Since it's in `.csv` format, it is required to run the following command to proc
 cd data; python parse_nr3d.py
 ```
 
-
 ## 3. Download Pretrained Weights
 
 You can download all the ready-to-use weights at [huggingface](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
@@ -93,14 +92,18 @@ You can download all the ready-to-use weights at [huggingface](https://huggingfa
 | Vote2Cap-DETR++ | $\checkmark$ | $\checkmark$ |       -      | $\checkmark$ | [[checkpoint]](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/blob/main/vote2cap-detr++/scanrefer_scst_vote2cap_detr_pp_XYZ_RGB_NORMAL.pth) |
 | Vote2Cap-DETR++ | $\checkmark$ |       -      | $\checkmark$ | $\checkmark$ | [[checkpoint]](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/blob/main/vote2cap-detr++/scanrefer_scst_vote2cap_detr_pp_XYZ_MULTIVIEW_NORMAL.pth) |
 
+
+
+
 ## 4. Training and Evaluating your own models
 
-Though we provide training commands from scratch, you can also start with some pretrained parameters provided under the `./pretrained` folder and skip certain steps.
+~~Though we provide training commands from scratch, you can also start with some pretrained parameters provided under the `./pretrained` folder and skip certain steps.~~
 
+Because of limited storage space of github, we have uploaded all the pretrained weights at huggingface. It is recommended to download all the files in the [`./pretrained` folder](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main/pretrained) to this repo.
 
 **[optional] 4.0 Pre-Training for Detection**
 
-This procedure is to generate the pre-trained weights in `./pretrained` folder.
+If you have already downloaded the [`./pretrained` folder](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main/pretrained) from huggingface, you can **SKIP** the following procedures as they are to generate the pre-trained weights in `./pretrained` folder.
 
 To train the Vote2Cap-DETR's detection branch for point cloud input without additional 2D features (aka [xyz + rgb + normal + height])
 
@@ -108,7 +111,7 @@ To train the Vote2Cap-DETR's detection branch for point cloud input without addi
 python main.py --use_color --use_normal --detector detector_Vote2Cap_DETR --checkpoint_dir pretrained/Vote2Cap_DETR_XYZ_COLOR_NORMAL
 ```
 
-To evaluate the pre-trained detection branch:
+To evaluate the pre-trained detection branch on ScanNet:
 
 ```{bash}
 python main.py --use_color --use_normal --detector detector_Vote2Cap_DETR --test_ckpt pretrained/Vote2Cap_DETR_XYZ_COLOR_NORMAL/checkpoint_best.pth --test_detection
