@@ -99,7 +99,7 @@ You can download all the ready-to-use weights at [huggingface](https://huggingfa
 
 ~~Though we provide training commands from scratch, you can also start with some pretrained parameters provided under the `./pretrained` folder and skip certain steps.~~
 
-Because of storage limitations of github, we have uploaded all the pretrained weights to huggingface. It is recommended to download and unzip the files from [pretrained.zip](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/blob/main/pretrained.zip) to `./pretrained`.
+Because of storage limitations of github, we have uploaded all the pretrained weights to huggingface. It is recommended to download [pretrained.zip](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/blob/main/pretrained.zip) to `./pretrained` and unzip it.
 
 **[optional] 4.0 Pre-Training for Detection**
 
