@@ -251,7 +251,7 @@ class Dataset(torch.utils.data.Dataset):
         
         self.tokenizer.pad_token = self.tokenizer.eos_token
         
-        assert split_set == "test"
+        # assert split_set == "test"
         
         root_dir = DATASET_ROOT_DIR
         meta_data_dir = DATASET_METADATA_DIR
