@@ -202,7 +202,7 @@ def main(args):
     
     ### build datasets and dataloaders
     dataset_config, datasets, dataloaders = build_dataset(args)
-    model = CaptionNet(args, dataset_config).cuda()
+    model = CaptionNet(args, dataset_config, datasets['train']).cuda()
     
     checkpoint = torch.load(args.test_ckpt, map_location=torch.device("cpu"))
     model.load_state_dict(checkpoint["model"])
