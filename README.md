@@ -99,11 +99,11 @@ You can download all the ready-to-use weights at [huggingface](https://huggingfa
 
 ~~Though we provide training commands from scratch, you can also start with some pretrained parameters provided under the `./pretrained` folder and skip certain steps.~~
 
-Because of storage limitations of github, we have uploaded all the pretrained weights to huggingface. It is recommended to download all the files from the [`./pretrained` folder](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main/pretrained) to this repo.
+Because of storage limitations of github, we have uploaded all the pretrained weights to huggingface. It is recommended to download and unzip the files from [pretrained.zip](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/blob/main/pretrained.zip) to `./pretrained`.
 
 **[optional] 4.0 Pre-Training for Detection**
 
-If you have already downloaded the [`./pretrained` folder](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main/pretrained) from huggingface, you can **SKIP** the following procedures as they are to generate the pre-trained weights in `./pretrained` folder.
+If you have already downloaded and unzipped the [pretrained.zip](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/blob/main/pretrained.zip) from huggingface to `./pretrained`, you can **SKIP** the following procedures as they are to generate the pre-trained weights in `./pretrained` folder.
 
 To train the Vote2Cap-DETR's detection branch for point cloud input without additional 2D features (aka [xyz + rgb + normal + height])
 
