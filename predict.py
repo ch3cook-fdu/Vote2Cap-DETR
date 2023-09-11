@@ -79,6 +79,16 @@ def build_dataset(args):
     dataset_config = dataset_module.DatasetConfig()
 
     datasets = {
+        "train": dataset_module.Dataset(
+            args,
+            dataset_config, 
+            split_set="train", 
+            use_color=args.use_color,
+            use_normal=args.use_normal,
+            use_multiview=args.use_multiview,
+            use_height=args.use_height,
+            augment=False
+        ),
         "test": dataset_module.Dataset(
             args,
             dataset_config, 
