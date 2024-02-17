@@ -9,7 +9,7 @@ Thanks to the implementation of [3DETR](https://github.com/facebookresearch/3det
 
 ## 0. News
 
-- 2024-02-17. 💥 Codes for [Vote2Cap-DETR++](https://arxiv.org/abs/2309.02999) are released!
+<!-- - 2024-02-17. 💥 Codes for [Vote2Cap-DETR++](https://arxiv.org/abs/2309.02999) are released! -->
 
 - 2023-09-07. 🤗 We further propose an advanced model at [arXiV](https://arxiv.org/pdf/2309.02999.pdf), and release some of the pre-trained weights at [huggingface](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
 
