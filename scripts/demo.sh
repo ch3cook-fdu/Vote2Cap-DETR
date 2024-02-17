@@ -8,5 +8,5 @@ python demo.py \
     --captioner captioner_dccv2 \
     --checkpoint_dir outputs/vote2cap_detrv2 \
     --batchsize_per_gpu 8 \
-    --test_ckpt /root/csj/pami-open-source/weights/vote2cap-detr++/scanrefer_vote2cap_detrv2_XYZ_RGB_NORMAL.pth \
+    --test_ckpt ./weights/vote2cap-detr++/scanrefer_vote2cap_detrv2_XYZ_RGB_NORMAL.pth \
     --gpu 3
