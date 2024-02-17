@@ -40,7 +40,7 @@ If you wish to use multi-view feature extracted by [Scan2Cap](https://github.com
 pip install h5py
 ```
 
-It is also **REQUIRED** to compile the CUDA accelerated PointNet++ and gIoU support:
+It is also **REQUIRED** to compile the CUDA accelerated PointNet++, and compile gIoU support for fast training:
 
 ```{bash}
 cd third_party/pointnet2
