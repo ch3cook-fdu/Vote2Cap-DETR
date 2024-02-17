@@ -1,0 +1,13 @@
+python scst_tuning.py \
+    --use_color \
+    --use_normal \
+    --dataset scene_nr3d \
+    --base_lr 1e-6 \
+    --detector detector_Vote2Cap_DETRv2 \
+    --captioner captioner_dccv2 \
+    --freeze_detector \
+    --use_beam_search \
+    --batchsize_per_gpu 2 \
+    --max_epoch 180 \
+    --pretrained_captioner exp_nr3d/Vote2Cap_DETRv2_RGB_NORMAL/checkpoint_best.pth \
+    --checkpoint_dir exp_nr3d/Vote2Cap_DETRv2_RGB_NORMAL

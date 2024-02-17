@@ -63,7 +63,8 @@ def make_args_parser():
     parser.add_argument("--gpu", default='0', type=str)
 
     ##### Testing #####
-    parser.add_argument("--test_ckpt", default="", type=str)
+    parser.add_argument("--test_ckpt", default=None, type=str)
+    parser.add_argument("--checkpoint_dir", default=None, type=str)
 
     ##### I/O #####
     parser.add_argument("--log_every", default=10, type=int)
@@ -205,7 +206,8 @@ def run_dense_caption(args, model, dataset_loader):
 
 def main(args):
     
-    args.checkpoint_dir = os.path.dirname(args.test_ckpt)
+    if args.checkpoint_dir is None:
+        args.checkpoint_dir = os.path.dirname(args.test_ckpt)
     args.visualize_dir = os.path.join(args.checkpoint_dir, 'prediction-test-set')
     
     os.makedirs(args.visualize_dir, exist_ok=True)

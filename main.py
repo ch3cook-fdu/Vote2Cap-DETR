@@ -11,7 +11,10 @@ from utils.io import resume_if_possible
 from utils.misc import my_worker_init_fn
 
 def make_args_parser():
-    parser = argparse.ArgumentParser("End-to-End 3D Dense Captioning with Vote2Cap-DETR", add_help=False)
+    parser = argparse.ArgumentParser(
+        "Vote2Cap-DETR: A set-to-set perspective towards 3D Dense Captioning", 
+        add_help=False
+    )
 
     ##### Optimizer #####
     parser.add_argument("--base_lr", default=5e-4, type=float)
@@ -28,8 +31,6 @@ def make_args_parser():
     # only ACTIVATE during dense caption training
     parser.add_argument("--pretrained_params_lr", default=None, type=float)
     
-    
-    
     ##### Model #####
     # input based parameters
     parser.add_argument("--use_color", default=False, action="store_true")
@@ -39,7 +40,6 @@ def make_args_parser():
     
     parser.add_argument(
         "--detector", default="detector_Vote2Cap_DETR", 
-        choices = ['detector_votenet', 'detector_Vote2Cap_DETR'],
         help="folder of the detector"
     )
     
@@ -327,7 +327,7 @@ if __name__ == "__main__":
     
     print(f"Called with args: {args}")
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
-    
+
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
     torch.cuda.manual_seed_all(args.seed)

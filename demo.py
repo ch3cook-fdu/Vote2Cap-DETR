@@ -225,7 +225,8 @@ def run_dense_caption(args, model, dataset_loader):
 
 def main(args):
     
-    args.checkpoint_dir = os.path.dirname(args.test_ckpt)
+    if args.checkpoint_dir is None:
+        args.checkpoint_dir = os.path.dirname(args.test_ckpt)
     args.visualize_dir = os.path.join(args.checkpoint_dir, 'visualization')
     
     os.makedirs(args.visualize_dir, exist_ok=True)

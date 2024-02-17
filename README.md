@@ -1,6 +1,6 @@
-# End-to-End 3D Dense Captioning with Vote2Cap-DETR (CVPR 2023)
+# Vote2Cap-DETR: A Set-to-Set Perspective Towards 3D Dense Captioning (CVPR 2023, T-PAMI 2024)
 
-Official implementation of ["End-to-End 3D Dense Captioning with Vote2Cap-DETR"](https://arxiv.org/abs/2301.02508) and ["Vote2Cap-DETR++: Decoupling Localization and Describing for End-to-End 3D Dense Captioning"](https://arxiv.org/abs/2309.02999).
+Official implementation of ["End-to-End 3D Dense Captioning with Vote2Cap-DETR"](https://arxiv.org/abs/2301.02508) (CVPR 2023) and ["Vote2Cap-DETR++: Decoupling Localization and Describing for End-to-End 3D Dense Captioning"](https://arxiv.org/abs/2309.02999) (T-PAMI 2024).
 
 ![pipeline](assets/Vote2Cap-DETR_and_Vote2Cap-DETR++.jpg)
 
@@ -8,6 +8,8 @@ Thanks to the implementation of [3DETR](https://github.com/facebookresearch/3det
 
 
 ## 0. News
+
+- 2024-02-17. 💥 Codes for [Vote2Cap-DETR++](https://arxiv.org/abs/2309.02999) are released!
 
 - 2023-09-07. 🤗 We further propose an advanced model at [arXiV](https://arxiv.org/pdf/2309.02999.pdf), and release some of the pre-trained weights at [huggingface](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
 
@@ -76,7 +78,7 @@ Since it's in `.csv` format, it is required to run the following command to proc
 cd data; python parse_nr3d.py
 ```
 
-## 3. Download Pretrained Weights
+## 3. [Optional] Download Pretrained Weights
 
 You can download all the ready-to-use weights at [huggingface](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
 
@@ -95,29 +97,33 @@ You can download all the ready-to-use weights at [huggingface](https://huggingfa
 
 
 
-## 4. Training and Evaluating your own models
+## 4. Training and Evaluation
 
-~~Though we provide training commands from scratch, you can also start with some pretrained parameters provided under the `./pretrained` folder and skip certain steps.~~
-
-Because of storage limitations of github, we have uploaded all the pretrained weights to huggingface. It is recommended to download [pretrained.zip](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/blob/main/pretrained.zip) to `./pretrained` and unzip it.
+Though we provide training commands from scratch, you can also start with some pretrained parameters provided under the `./pretrained` folder and skip certain steps.
 
 **[optional] 4.0 Pre-Training for Detection**
 
-If you have already downloaded and unzipped the [pretrained.zip](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/blob/main/pretrained.zip) from huggingface to `./pretrained`, you can **SKIP** the following procedures as they are to generate the pre-trained weights in `./pretrained` folder.
+You are free to **SKIP** the following procedures as they are to generate the pre-trained weights in `./pretrained` folder.
 
-To train the Vote2Cap-DETR's detection branch for point cloud input without additional 2D features (aka [xyz + rgb + normal + height])
+To train the Vote2Cap-DETR's detection branch for point cloud input without additional 2D features (aka [xyz + rgb + normal + height]):
 
 ```{bash}
-python main.py --use_color --use_normal --detector detector_Vote2Cap_DETR --checkpoint_dir pretrained/Vote2Cap_DETR_XYZ_COLOR_NORMAL
+bash scripts/vote2cap-detr/train_scannet.sh
+
+# Please also try our updated Vote2Cap-DETR++ model:
+bash scripts/vote2cap-detr++/train_scannet.sh
 ```
 
 To evaluate the pre-trained detection branch on ScanNet:
 
 ```{bash}
-python main.py --use_color --use_normal --detector detector_Vote2Cap_DETR --test_ckpt pretrained/Vote2Cap_DETR_XYZ_COLOR_NORMAL/checkpoint_best.pth --test_detection
+bash scripts/vote2cap-detr/eval_scannet.sh
+
+# Our updated Vote2Cap-DETR++:
+bash scripts/vote2cap-detr++/eval_scannet.sh
 ```
 
-To train with additional 2D features (aka [xyz + multiview + normal + height]) rather than RGB inputs, you can replace `--use_color` to `--use_multiview`.
+To train with additional 2D features (aka [xyz + multiview + normal + height]) rather than RGB inputs, you can manually replace `--use_color` to `--use_multiview`.
 
 
 **4.1 MLE Training for 3D Dense Captioning**
@@ -125,30 +131,54 @@ To train with additional 2D features (aka [xyz + multiview + normal + height]) r
 Please make sure there are pretrained checkpoints under the `./pretrained` directory. To train the mdoel for 3D dense captioning with MLE training on ScanRefer:
 
 ```{bash}
-python main.py --use_color --use_normal --use_pretrained --warm_lr_epochs 0 --pretrained_params_lr 1e-6 --use_beam_search --base_lr 1e-4 --dataset scene_scanrefer --eval_metric caption --vocabulary scanrefer --detector detector_Vote2Cap_DETR --captioner captioner_dcc --checkpoint_dir exp_scanrefer/Vote2Cap_DETR_RGB_NORMAL --max_epoch 720
+bash scripts/vote2cap-detr/train_mle_scanrefer.sh
+
+# Our updated Vote2Cap-DETR++:
+bash scripts/vote2cap-detr++/train_mle_scanrefer.sh
 ```
 
-Change `--dataset scene_scanrefer` to `--dataset scene_nr3d` to train the model for the Nr3D dataset.
+And on Nr3D:
+
+```{bash}
+bash scripts/vote2cap-detr/train_mle_nr3d.sh
+
+# Our updated Vote2Cap-DETR++:
+bash scripts/vote2cap-detr++/train_mle_nr3d.sh
+```
 
 **4.2 Self-Critical Sequence Training for 3D Dense Captioning**
 
-To train the model with Self-Critical Sequence Training(SCST), you can use the following command:
+To train the model with Self-Critical Sequence Training (SCST), you can use the following command:
 
 ```{cmd}
-python scst_tuning.py --use_color --use_normal --base_lr 1e-6 --detector detector_Vote2Cap_DETR --captioner captioner_dcc --freeze_detector --use_beam_search --batchsize_per_gpu 2 --max_epoch 180 --pretrained_captioner exp_scanrefer/Vote2Cap_DETR_RGB_NORMAL/checkpoint_best.pth --checkpoint_dir exp_scanrefer/scst_Vote2Cap_DETR_RGB_NORMAL
+bash scripts/vote2cap-detr/train_scst_scanrefer.sh
+
+# Our updated Vote2Cap-DETR++:
+bash scripts/vote2cap-detr++/train_scst_scanrefer.sh
 ```
 
-Change `--dataset scene_scanrefer` to `--dataset scene_nr3d` to train the model for the Nr3D dataset.
+And on Nr3D:
+
+```{bash}
+bash scripts/vote2cap-detr/train_scst_nr3d.sh
+
+# Our updated Vote2Cap-DETR++:
+bash scripts/vote2cap-detr++/train_scst_nr3d.sh
+```
 
 **4.3 Evaluating the Weights**
 
-You can evaluate the trained model in each step by specifying different checkpont directories:
+You can evaluate any trained model with specified **models** and **checkponts**. Change `--dataset scene_scanrefer` to `--dataset scene_nr3d` to evaluate the model for the Nr3D dataset.
 
 ```{cmd}
-python main.py --use_color --use_normal --dataset scene_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 8 --test_ckpt [...]/checkpoint_best.pth --test_caption
+bash scripts/eval_3d_dense_caption.sh
 ```
 
-Change `--dataset scene_scanrefer` to `--dataset scene_nr3d` to train the model for the Nr3D dataset.
+Run the following commands to store object predictions and captions for each scene.
+
+```{cmd}
+bash scripts/demo.sh
+```
 
 ## 5. Make Predictions for online test benchmark
 
@@ -157,7 +187,7 @@ Our model also provides prediction codes for ScanRefer online test benchmark.
 The following command will generate a `.json` file under the folder defined by `--checkpoint_dir`.
 
 ```
-python predict.py --use_color --use_normal --dataset test_scanrefer --vocabulary scanrefer --use_beam_search --detector detector_Vote2Cap_DETR --captioner captioner_dcc --batchsize_per_gpu 8 --test_ckpt [...]/checkpoint_best.pth
+bash submit.sh
 ```
 
 ## 6. BibTex
@@ -172,6 +202,7 @@ If you find our work helpful, please kindly cite our paper:
   pages={11124--11133},
   year={2023}
 }
+
 @misc{chen2023vote2capdetr,
   title={Vote2Cap-DETR++: Decoupling Localization and Describing for End-to-End 3D Dense Captioning}, 
   author={Sijin Chen and Hongyuan Zhu and Mingsheng Li and Xin Chen and Peng Guo and Yinjie Lei and Gang Yu and Taihao Li and Tao Chen},
@@ -188,4 +219,6 @@ Vote2Cap-DETR and Vote2Cap-DETR++ are both licensed under a [MIT License](LICENS
 
 ## 8. Contact
 
-If you have any questions or suggestions about this repo, please feel free to open issues or contact me (csjch3cook@gmail.com)!
+If you have any questions or suggestions regarding this repo, please feel free to open issues!
+
+

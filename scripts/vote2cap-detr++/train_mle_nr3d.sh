@@ -1,0 +1,15 @@
+python main.py \
+    --use_color \
+    --use_normal \
+    --use_pretrained \
+    --warm_lr_epochs 0 \
+    --pretrained_params_lr 1e-6 \
+    --use_beam_search \
+    --base_lr 1e-4 \
+    --dataset scene_nr3d \
+    --eval_metric caption \
+    --vocabulary scanrefer \
+    --detector detector_Vote2Cap_DETRv2 \
+    --captioner captioner_dccv2 \
+    --checkpoint_dir exp_nr3d/Vote2Cap_DETRv2_RGB_NORMAL \
+    --max_epoch 720
