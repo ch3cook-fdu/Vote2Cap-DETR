@@ -9,9 +9,13 @@ Thanks to the implementation of [3DETR](https://github.com/facebookresearch/3det
 
 ## 0. News
 
-<!-- - 2024-02-17. 💥 Codes for [Vote2Cap-DETR++](https://arxiv.org/abs/2309.02999) are released! -->
+- 2024-02-21. 💥 Code for [Vote2Cap-DETR++](https://arxiv.org/abs/2309.02999) are released!
 
-- 2023-09-07. 🤗 We further propose an advanced model at [arXiV](https://arxiv.org/pdf/2309.02999.pdf), and release some of the pre-trained weights at [huggingface](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
+- 2024-02-20. 🚩 Vote2Cap-DETR++ reached 1st place on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
+
+- 2023-10-06. 🚩 Vote2Cap-DETR won the Scan2Cap Challenge in the 3rd Language for 3D Scene Workshop at ICCV 2023.
+
+- 2023-09-07. 📃 We further propose an advanced model, [Vote2Cap-DETR++](https://arxiv.org/pdf/2309.02999.pdf), which decouples the feature extraction for object localization and caption generation.
 
 - 2022-11-17. 🚩 Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
 
@@ -182,7 +186,7 @@ bash scripts/demo.sh
 
 ## 5. Make Predictions for online test benchmark
 
-Our model also provides prediction codes for ScanRefer online test benchmark.
+Our model also provides the inference code for ScanRefer online test benchmark.
 
 The following command will generate a `.json` file under the folder defined by `--checkpoint_dir`.
 
