@@ -19,7 +19,7 @@ Thanks to the implementation of [3DETR](https://github.com/facebookresearch/3det
 
 - 2022-11-17. 🚩 Our model sets a new state-of-the-art on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
 
-![pipeline](assets/scanrefer-online-test.png)
+![pipeline](assets/scanrefer-test.png)
 
 
 ## 1. Environment
