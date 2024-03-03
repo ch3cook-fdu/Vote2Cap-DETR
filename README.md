@@ -11,9 +11,9 @@ Thanks to the implementation of [3DETR](https://github.com/facebookresearch/3det
 
 - 2024-02-21. 💥 Code for [Vote2Cap-DETR++](https://arxiv.org/abs/2309.02999) is released!
 
-- 2024-02-20. 🚩 Vote2Cap-DETR++ reached 1st place on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
+- 2024-02-20. 🚩 Vote2Cap-DETR++ reaches 1st place on the [Scan2Cap online test benchmark](https://kaldir.vc.in.tum.de/scanrefer_benchmark/benchmark_captioning).
 
-- 2023-10-06. 🚩 Vote2Cap-DETR won the Scan2Cap Challenge in the 3rd Language for 3D Scene Workshop at ICCV 2023.
+- 2023-10-06. 🚩 Vote2Cap-DETR wins the Scan2Cap Challenge in the 3rd Language for 3D Scene Workshop at ICCV 2023.
 
 - 2023-09-07. 📃 We further propose an advanced model, [Vote2Cap-DETR++](https://arxiv.org/pdf/2309.02999.pdf), which decouples feature extraction for object localization and caption generation.
 
@@ -84,7 +84,7 @@ cd data; python parse_nr3d.py
 
 ## 3. [Optional] Download Pretrained Weights
 
-You can download all the ready-to-use weights at [huggingface](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
+You can download all the ready-to-use weights from [huggingface](https://huggingface.co/CH3COOK/Vote2Cap-DETR-weights/tree/main).
 
 
 |      Model      |     SCST     |      rgb     |  multi-view  |    normal    | checkpoint |
