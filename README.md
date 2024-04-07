@@ -1,6 +1,6 @@
 # Vote2Cap-DETR: A Set-to-Set Perspective Towards 3D Dense Captioning
 
-Official implementation of ["End-to-End 3D Dense Captioning with Vote2Cap-DETR"](https://arxiv.org/abs/2301.02508) (CVPR 2023) and ["Vote2Cap-DETR++: Decoupling Localization and Describing for End-to-End 3D Dense Captioning"](https://arxiv.org/abs/2309.02999) (T-PAMI).
+Official implementation of ["End-to-End 3D Dense Captioning with Vote2Cap-DETR"](https://arxiv.org/abs/2301.02508) (CVPR 2023) and ["Vote2Cap-DETR++: Decoupling Localization and Describing for End-to-End 3D Dense Captioning"](https://arxiv.org/abs/2309.02999) (T-PAMI 2024).
 
 ![pipeline](assets/Vote2Cap-DETR_and_Vote2Cap-DETR++.jpg)
 
@@ -9,7 +9,7 @@ Thanks to the implementation of [3DETR](https://github.com/facebookresearch/3det
 
 ## 0. News
 
-- 2024-04-07. 💥 Our state-of-the-art 3D dense captioning method [Vote2Cap-DETR++](https://arxiv.org/abs/2309.02999) is accepted to T-PAMI!
+- 2024-04-07. 💥 Our state-of-the-art 3D dense captioning method [Vote2Cap-DETR++](https://arxiv.org/abs/2309.02999) is accepted to T-PAMI 2024!
 
 - 2024-02-21. 💥 Code for [Vote2Cap-DETR++](https://arxiv.org/abs/2309.02999) is released!
 
